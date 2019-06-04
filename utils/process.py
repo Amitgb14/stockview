@@ -18,9 +18,6 @@ LAST = "last_entry"
 class Process():
     def __init__(self, filename="config.yml"):
         self.config = config(filename)
-        # self.host = self.config["redis"]["host"]
-        # self.port = self.config["redis"]["port"]
-        # self.db = self.config["redis"]["db"]
         self.connection = self.__connect()
 
     def __connect(self):
@@ -71,14 +68,17 @@ class Process():
         if filename is None:
             filename = datetime.today().strftime('%d%m%y')
         key = self.connection.get(LAST)
-        if key[2:-4] == filename:
+        logging.info("{}=>{}".format(key, filename))
+        if key and key[2:-4] == filename:
             logging.info("Arleady in DB {0}.".format(filename))
             return True
 
-        status = self.download_file(filename=filename)
         target_dir = "{}/csv/".format(root_path)
         zip_file = "{0}/csv/{1}.zip".format(root_path, filename)
         
+        if not os.path.isdir(target_dir):
+            os.makedirs(target_dir)
+        status = self.download_file(filename=filename)
         csv_filename = None
 
         if status:
