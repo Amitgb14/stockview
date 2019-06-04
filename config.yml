@@ -1,9 +1,6 @@
 ---
+
 process:
   link: https://www.bseindia.com/download/BhavCopy/Equity/EQ{date}_CSV.ZIP
 
-redis:
-  host: redis
-  port: 10101
-  db: 0
 

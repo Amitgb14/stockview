@@ -18,14 +18,14 @@ LAST = "last_entry"
 class Process():
     def __init__(self, filename="config.yml"):
         self.config = config(filename)
-        self.host = self.config["redis"]["host"]
-        self.port = self.config["redis"]["port"]
-        self.db = self.config["redis"]["db"]
+        # self.host = self.config["redis"]["host"]
+        # self.port = self.config["redis"]["port"]
+        # self.db = self.config["redis"]["db"]
         self.connection = self.__connect()
 
     def __connect(self):
         try:
-            r = redis.StrictRedis(host=self.host, port=self.port, db=self.db)
+            r = redis.from_url(os.environ.get("REDIS_URL"))
             logging.info("Connected Redis successfully.")
             return r
         except Exception as e:
