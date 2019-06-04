@@ -7,7 +7,7 @@ import redis
 import json
 import logging
 import requests
-from config import *
+from .config import *
 from zipfile import ZipFile
 from datetime import datetime
 
