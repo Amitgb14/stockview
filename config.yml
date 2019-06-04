@@ -1,0 +1,9 @@
+---
+process:
+  link: https://www.bseindia.com/download/BhavCopy/Equity/EQ{date}_CSV.ZIP
+
+redis:
+  host: qredis02.p03.eng.sjc01.qualys.com
+  port: 50180
+  db: 0
+
