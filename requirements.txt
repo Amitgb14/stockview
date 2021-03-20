@@ -6,7 +6,7 @@ CherryPy==17.4.1
 contextlib2==0.5.5
 idna==2.8
 jaraco.functools==2.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 more-itertools==5.0.0
 portend==2.4
